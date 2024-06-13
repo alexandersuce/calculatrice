@@ -1,208 +1,172 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Online Calculator</title>
+    <title>Ilya le petit Russe</title>
     <style>
         body {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
             background-color: #f4f4f9;
-            font-family: 'Arial', sans-serif;
         }
 
-        .calculator {
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
-        }
-
-        .calculator-screen {
-            width: 100%;
-            height: 80px;
-            border: none;
-            background-color: #252525;
+        header {
+            background-color: #333;
             color: #fff;
-            text-align: right;
-            padding: 10px;
-            font-size: 2rem;
-            border-top-left-radius: 5px;
-            border-top-right-radius: 5px;
+            padding: 10px 0;
+            text-align: center;
         }
 
-        .calculator-keys {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
+        header h1 {
+            margin: 0;
+            font-size: 2.5rem;
+        }
+
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        nav ul li {
+            display: inline;
+            margin-right: 20px;
+        }
+
+        nav ul li a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 1.2rem;
+        }
+
+        main {
+            padding: 20px;
+        }
+
+        .section {
+            margin-bottom: 30px;
+        }
+
+        .section h2 {
+            color: #333;
+        }
+
+        .russe {
+            display: flex;
+            gap: 10px;
         }
 
         button {
-            height: 60px;
-            font-size: 1.5rem;
-            border: 1px solid #ddd;
-            background-color: #fff;
+            padding: 10px;
+            font-size: 1.2rem;
+            background-color: #4CAF50;
+            color: #fff;
+            border: none;
             cursor: pointer;
         }
 
-        button.operator {
-            background-color: #f9a825;
-            color: #fff;
+        button:hover {
+            background-color: #45a049;
         }
 
-        button.equal-sign {
-            background-color: #f57c00;
-            color: #fff;
-            grid-column: span 4;
+        form {
+            max-width: 500px;
+            margin: auto;
         }
 
-        button.all-clear {
-            background-color: #d32f2f;
-            color: #fff;
+        form label {
+            display: block;
+            margin-bottom: 5px;
         }
 
-        button:active {
-            background-color: #ddd;
+        form input[type="text"],
+        form input[type="email"],
+        form textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ddd;
+        }
+
+        form textarea {
+            height: 150px;
+        }
+
+        form button {
+            padding: 10px 20px;
+            font-size: 1.2rem;
+            background-color: #4CAF50;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+        }
+
+        form button:hover {
+            background-color: #45a049;
+        }
+
+        footer {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 10px 0;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
         }
     </style>
 </head>
 <body>
-    <div class="calculator">
-        <input type="text" class="calculator-screen" value="" disabled />
-        <div class="calculator-keys">
-            <button type="button" class="operator" value="+">+</button>
-            <button type="button" class="operator" value="-">-</button>
-            <button type="button" class="operator" value="*">&times;</button>
-            <button type="button" class="operator" value="/">&divide;</button>
+    <header>
+        <h1>Bienvenue sur Ilya le petit Russe</h1>
+        <nav>
+            <ul>
+                <li><a href="#accueil">Accueil</a></li>
+                <li><a href="#aprendre">Apprendre le russe</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
 
-            <button type="button" value="7">7</button>
-            <button type="button" value="8">8</button>
-            <button type="button" value="9">9</button>
+    <main>
+        <section id="accueil" class="section">
+            <h2>Qui est Ilya le petit Russe ?</h2>
+            <p>Ilya est un petit garçon russe qui adore partager sa langue et sa culture avec le monde.</p>
+        </section>
 
-            <button type="button" value="4">4</button>
-            <button type="button" value="5">5</button>
-            <button type="button" value="6">6</button>
+        <section id="aprendre" class="section">
+            <h2>Apprendre quelques mots en russe</h2>
+            <div class="russe">
+                <button onclick="prononcer('Privet')">Privet</button>
+                <button onclick="prononcer('Spasibo')">Spasibo</button>
+                <button onclick="prononcer('Da')">Da</button>
+            </div>
+        </section>
 
-            <button type="button" value="1">1</button>
-            <button type="button" value="2">2</button>
-            <button type="button" value="3">3</button>
+        <section id="contact" class="section">
+            <h2>Contactez-nous</h2>
+            <form action="envoyer.php" method="post">
+                <label for="nom">Nom :</label>
+                <input type="text" id="nom" name="nom" required>
+                <label for="email">Email :</label>
+                <input type="email" id="email" name="email" required>
+                <label for="message">Message :</label>
+                <textarea id="message" name="message" required></textarea>
+                <button type="submit">Envoyer</button>
+            </form>
+        </section>
+    </main>
 
-            <button type="button" value="0">0</button>
-            <button type="button" class="decimal" value=".">.</button>
-            <button type="button" class="all-clear" value="all-clear">AC</button>
-            <button type="button" class="equal-sign" value="=">=</button>
-        </div>
-    </div>
+    <footer>
+        <p>&copy; 2024 Ilya le petit Russe. Tous droits réservés.</p>
+    </footer>
+
     <script>
-        const calculator = {
-            displayValue: '0',
-            firstOperand: null,
-            waitingForSecondOperand: false,
-            operator: null,
-        };
-
-        function inputDigit(digit) {
-            const { displayValue, waitingForSecondOperand } = calculator;
-
-            if (waitingForSecondOperand === true) {
-                calculator.displayValue = digit;
-                calculator.waitingForSecondOperand = false;
-            } else {
-                calculator.displayValue = displayValue === '0' ? digit : displayValue + digit;
-            }
+        function prononcer(mot) {
+            alert(`Le mot "${mot}" en russe !`);
         }
-
-        function inputDecimal(dot) {
-            if (calculator.waitingForSecondOperand === true) {
-                calculator.displayValue = '0.';
-                calculator.waitingForSecondOperand = false;
-                return;
-            }
-
-            if (!calculator.displayValue.includes(dot)) {
-                calculator.displayValue += dot;
-            }
-        }
-
-        function handleOperator(nextOperator) {
-            const { firstOperand, displayValue, operator } = calculator;
-            const inputValue = parseFloat(displayValue);
-
-            if (operator && calculator.waitingForSecondOperand) {
-                calculator.operator = nextOperator;
-                return;
-            }
-
-            if (firstOperand == null) {
-                calculator.firstOperand = inputValue;
-            } else if (operator) {
-                const result = calculate(firstOperand, inputValue, operator);
-
-                calculator.displayValue = `${parseFloat(result.toFixed(7))}`;
-                calculator.firstOperand = result;
-            }
-
-            calculator.waitingForSecondOperand = true;
-            calculator.operator = nextOperator;
-        }
-
-        function calculate(firstOperand, secondOperand, operator) {
-            if (operator === '+') {
-                return firstOperand + secondOperand;
-            } else if (operator === '-') {
-                return firstOperand - secondOperand;
-            } else if (operator === '*') {
-                return firstOperand * secondOperand;
-            } else if (operator === '/') {
-                return firstOperand / secondOperand;
-            }
-
-            return secondOperand;
-        }
-
-        function resetCalculator() {
-            calculator.displayValue = '0';
-            calculator.firstOperand = null;
-            calculator.waitingForSecondOperand = false;
-            calculator.operator = null;
-        }
-
-        function updateDisplay() {
-            const display = document.querySelector('.calculator-screen');
-            display.value = calculator.displayValue;
-        }
-
-        updateDisplay();
-
-        const keys = document.querySelector('.calculator-keys');
-        keys.addEventListener('click', (event) => {
-            const { target } = event;
-            if (!target.matches('button')) {
-                return;
-            }
-
-            if (target.classList.contains('operator')) {
-                handleOperator(target.value);
-                updateDisplay();
-                return;
-            }
-
-            if (target.classList.contains('decimal')) {
-                inputDecimal(target.value);
-                updateDisplay();
-                return;
-            }
-
-            if (target.classList.contains('all-clear')) {
-                resetCalculator();
-                updateDisplay();
-                return;
-            }
-
-            inputDigit(target.value);
-            updateDisplay();
-        });
     </script>
 </body>
 </html>
